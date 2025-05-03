@@ -83,8 +83,8 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-_Key *Key_Main;
-Key_Main = One_Key;
+	_Key *Key_Main;
+	Key_Main = One_Key;
 	
   /* USER CODE END 1 */
 
@@ -114,16 +114,16 @@ Key_Main = One_Key;
   MX_USART1_UART_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-	OLED_Init();
+	OLED_Init();		
 	AHT20_Init();
 	
-  HAL_TIM_Base_Start_IT(&htim6);
+    HAL_TIM_Base_Start_IT(&htim6);		//启动定时器10毫秒触发一次中断
   
 	HAL_Delay(500);
 //	IIC_Write_Set_Zero();
-	DAC_SET_VALUE(300); 
+	DAC_SET_VALUE(300); 			//输出300毫伏电压
 	
-	W25QXX_Read(Sectors_Num, 0, 2);
+	W25QXX_Read(Sectors_Num, 0, 2);			//读取0页数据，储存页码，如果为空则重16页开始
 	if(Sectors_Num[0] == 0xFF || Sectors_Num[1] == 0xFF)
 		Sec_Num = 16;
 	else
@@ -138,17 +138,11 @@ Key_Main = One_Key;
 	HAL_ADCEx_Calibration_Start(&hadc1);
 	HAL_ADC_Start_DMA(&hadc1,(uint32_t *)ADC_Value,sizeof(ADC_Value));
 
-	
-
   while (1)
   {
-	  
-	  UI_one(Key_Main); 
+		UI_one(Key_Main); 
 		UI_two(Key_Main);
 		UI_Therr(Key_Main);
-	  
-
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

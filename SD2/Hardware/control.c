@@ -20,7 +20,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			TIM_num = 0;
 		}
 		
-			  
 		if(TIM_num2 >= 30)
 		{
 			HAL_ADC_Stop_DMA(&hadc1);
@@ -63,9 +62,6 @@ void Get_ADC_Value(void)
 	{
 		ADC_Filter_Value[count] = (sum[count] * 330)  >> 12;//
 	}
-
-	
-	
 }
 
 void Get_Set_Alarm(void)
@@ -87,12 +83,7 @@ void Set_Data(void)
 	static uint16_t num5 = 16;
 
 	W25QXX_Read(read_buf, num5, 26);
-	printf("rrrrrrrrrrrrrrrr\r\n");
-	for(int p=0;p<26;p++)
-	{
-		printf("0x%02x****",read_buf[p]);
-	}
-	printf("----\r\n");
+
 	Past_Data[0] = ((uint16_t)read_buf[1] << 8) + (uint16_t)read_buf[0];//Ò»Ñõ»¯Ì¼
 	Past_Data[1] = ((uint16_t)read_buf[3] << 8) + (uint16_t)read_buf[2];//Áò»¯Çâ
 	Past_Data[2] = ((uint16_t)read_buf[5] << 8) + (uint16_t)read_buf[4];//¼×È©
@@ -104,16 +95,6 @@ void Set_Data(void)
 	Past_Data[7] = ((uint16_t)read_buf[25] << 8) + (uint16_t)read_buf[24];//ÐòºÅ
 	
 	num5++;
-	
-//	if(num5_Flag)
-//		num5++;
-//	else
-//	{
-//		num5--;
-//		if(num5 < 16)
-//			num5 = 16;
-//	}
-		
 }
 
 /*----------------------*/
@@ -188,12 +169,6 @@ void Long_Turn_Byte(uint16_t MYadc[4],uint32_t MYHN3,uint32_t MYc1,uint32_t MYt1
 	write_buf[24] = (uint8_t)S_Num & 0xFF;
 	write_buf[25] = (uint8_t)(S_Num >> 8) & 0xFF;
 	
-	printf("wwwwwwwwwwwwwwww\r\n");
-	for(int p=0;p<26;p++)
-	{
-		printf("0x%02x****",write_buf[p]);
-	}
-	printf("----\r\n");
 }                   
 
 

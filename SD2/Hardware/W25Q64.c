@@ -31,10 +31,10 @@ static HAL_StatusTypeDef SPI_Receive(uint8_t* recv_buf, uint16_t size)
  * @param   size —— 要发送/接收数据的字节数
  * @retval  成功返回HAL_OK
  */
-static HAL_StatusTypeDef SPI_TransmitReceive(uint8_t* send_buf, uint8_t* recv_buf, uint16_t size)
-{
-   return HAL_SPI_TransmitReceive(&hspi1, send_buf, recv_buf, size, 100);
-}
+//static HAL_StatusTypeDef SPI_TransmitReceive(uint8_t* send_buf, uint8_t* recv_buf, uint16_t size)
+//{
+//   return HAL_SPI_TransmitReceive(&hspi1, send_buf, recv_buf, size, 100);
+//}
 
 
 /**
