@@ -4,6 +4,8 @@
 #include "main.h"
 #include "spi.h"
 
+extern uint16_t num5;
+
 void DAC_SET_VALUE(uint16_t val);
 void Get_ADC_Value(void);
 void Get_Set_Alarm(void);

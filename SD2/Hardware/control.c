@@ -1,6 +1,7 @@
 #include "control.h"
 
-
+uint16_t num5 = 16;
+	
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	static uint8_t TIM_num = 0;
@@ -80,8 +81,6 @@ void Get_Set_Alarm(void)
 
 void Set_Data(void)
 {
-	static uint16_t num5 = 16;
-
 	W25QXX_Read(read_buf, num5, 26);
 
 	Past_Data[0] = ((uint16_t)read_buf[1] << 8) + (uint16_t)read_buf[0];//Ò»Ñõ»¯Ì¼

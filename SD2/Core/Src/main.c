@@ -117,7 +117,9 @@ int main(void)
 	OLED_Init();		
 	AHT20_Init();
 	
-    HAL_TIM_Base_Start_IT(&htim6);		//启动定时器10毫秒触发一次中断
+	UI_Init();						//等待10秒，传感器预热 
+	
+  HAL_TIM_Base_Start_IT(&htim6);		//启动定时器10毫秒触发一次中断
   
 	HAL_Delay(500);
 //	IIC_Write_Set_Zero();
